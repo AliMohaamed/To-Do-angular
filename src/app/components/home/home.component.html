@@ -1,0 +1,92 @@
+<div class="container py-4">
+  <h1 class="app-title">Task<span>Flow</span></h1>
+
+  <div class="card">
+    <div class="card-header text-center">
+      <h2><i class="bi bi-check2-circle me-2"></i>My Tasks</h2>
+    </div>
+
+    <div class="card-body">
+      <!-- Progress bar -->
+      <div class="progress-container">
+        <div class="progress-bar" id="taskProgress" style="width: 0%"></div>
+      </div>
+
+      <!-- Task input form -->
+      <form id="taskForm" class="mb-4">
+        <div class="input-group">
+          <input
+            type="text"
+            id="taskInput"
+            class="form-control"
+            placeholder="What do you need to do today?"
+            required
+            name="task"
+            #taskName
+          />
+          <button
+            type="submit"
+            class="btn btn-add-task"
+            (click)="addTask($event, taskName)"
+          >
+            <i class="bi bi-plus-lg me-2"></i>Add Task
+          </button>
+        </div>
+      </form>
+
+      <!-- Task filters -->
+      <div class="task-filters">
+        <button class="filter-btn active" data-filter="all">
+          All
+          <span class="task-count" id="allCount">{{ taskNames.length }}</span>
+        </button>
+      </div>
+
+      <!-- Task Meta Info -->
+      <div class="task-meta">
+        <button
+          class="clear-btn mx-auto"
+          id="clearCompletedBtn"
+          (click)="clearAll()"
+        >
+          <i class="bi bi-trash me-2"></i>Clear All
+        </button>
+      </div>
+
+      <!-- Tasks container -->
+      <div class="task-list" id="taskList">
+        <!-- Empty state (shown when no tasks) -->
+        @for (task of taskNames; track $index){
+        <div class="task-item" [class.completed]="task.completed">
+          <div class="completed-animation"></div>
+          <div class="task-content">
+            <div class="checkbox-wrapper">
+              <input
+                type="checkbox"
+                class="task-checkbox"
+                (click)="completeTask($event, $index)"
+              />
+              <span class="checkbox-custom"></span>
+            </div>
+            <span class="task-text">{{ task.taskName }}</span>
+          </div>
+          <div class="task-actions" (click)="deleteTask($index)">
+            <button class="action-btn btn-delete">Delete</button>
+          </div>
+        </div>
+        }@empty {
+        <div class="empty-state" id="emptyState">
+          <h3>No tasks yet</h3>
+          <p>
+            Add your first task using the form above and start being productive
+            today!
+          </p>
+          <label for="taskInput" class="btn-start" id="startAddingBtn">
+            Add Your First Task
+          </label>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
