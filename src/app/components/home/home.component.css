@@ -508,3 +508,11 @@
   background-color: var(--success);
   box-shadow: 0 0 5px var(--success);
 }
+
+.not-show {
+  display: none;
+}
+
+.not-show.active {
+  display: block !important;
+}

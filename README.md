@@ -1,6 +1,15 @@
-# ToDo
+# Angular To-Do Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+A simple and intuitive task management application built with Angular that helps you keep track of your daily tasks.
+
+## Features
+
+Add new tasks to your to-do list
+Mark tasks as complete
+Remove tasks from the list
+Display a congratulatory message when all tasks are completed
+
+Getting Started
 
 ## Development server
 

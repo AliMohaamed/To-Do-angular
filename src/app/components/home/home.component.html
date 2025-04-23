@@ -36,7 +36,7 @@
 
       <!-- Task filters -->
       <div class="task-filters">
-        <button class="filter-btn active" data-filter="all">
+        <button class="filter-btn active">
           All
           <span class="task-count" id="allCount">{{ taskNames.length }}</span>
         </button>
@@ -86,6 +86,12 @@
           </label>
         </div>
         }
+        <p
+          class="lead fs-2 not-show bg-success text-light p-2 rounded"
+          [class.active]="allTaskesCompleted"
+        >
+          All Task Done
+        </p>
       </div>
     </div>
   </div>
